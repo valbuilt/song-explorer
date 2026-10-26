@@ -1,14 +1,14 @@
 import { searchTracks } from "@/logic/deezer";
+import TrackGrid from "@/components/TrackGrid/TrackGrid";
 
 export default async function TracksPage() {
+  //for now the search word is fixed
   const tracks = await searchTracks("love");
-
-  console.log(tracks[0]);
 
   return (
     <>
       <h1>Tracks</h1>
-      <p>Found {tracks.length} tracks</p>
+      <TrackGrid tracks={tracks} />
     </>
   );
 }
