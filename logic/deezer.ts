@@ -1,4 +1,5 @@
-import { TrackSummary } from "@/types/deezer";
+import { notFound } from "next/navigation";
+import { TrackSummary, TrackDetail } from "@/types/deezer";
 
 const DEEZER_API = "https://api.deezer.com";
 const TRACKS_PER_SEARCH = 24;
@@ -23,4 +24,24 @@ export async function searchTracks(
   }
 
   return data.data;
+}
+
+// Gets one track by its id
+export async function getTrackById(trackId: string): Promise<TrackDetail> {
+  const response = await fetch(
+    `${DEEZER_API}/track/${encodeURIComponent(trackId)}`,
+  );
+
+  if (!response.ok) {
+    throw new Error("Could not get the track from Deezer");
+  }
+
+  const data = await response.json();
+
+  // If the track cannot be found, show Next.js's 404 page.
+  if (data.error) {
+    notFound();
+  }
+
+  return data;
 }
