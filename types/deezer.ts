@@ -22,7 +22,7 @@ export type TrackSummary = {
   id: number;
   title: string;
   duration: number;
-  explicit_content_lyrics: boolean;
+  explicit_lyrics: boolean;
   artist: Artist;
   album: Album;
 };

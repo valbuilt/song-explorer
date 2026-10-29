@@ -1,7 +1,7 @@
 import "./track-page.css";
 import Image from "next/image";
 import Link from "next/link";
-import { getTrackById } from "@/logic/deezer";
+import { getTrackById, getAlbumById } from "@/logic/deezer";
 import { getBpmForTrack } from "@/logic/getBpmForTrack";
 import { formatTrackDuration } from "@/logic/formatTrackDuration";
 
@@ -14,6 +14,17 @@ export default async function TrackPage({ params }: Props) {
 
   const track = await getTrackById(id);
   const bpm = getBpmForTrack(track);
+
+  // The genre is not on the track, so I ask for the album it belongs to
+  const album = await getAlbumById(track.album.id);
+
+  // Some albums have no genres, then I use an empty list
+  const genres = album.genres ? album.genres.data : [];
+
+  const genreText =
+    genres.length > 0
+      ? genres.map((genre) => genre.name).join(", ")
+      : "Genre not available";
 
   return (
     <>
@@ -31,6 +42,7 @@ export default async function TrackPage({ params }: Props) {
           <h1>{track.title}</h1>
           <p>Artist: {track.artist.name}</p>
           <p>Album: {track.album.title}</p>
+          <p>Genre: {genreText}</p>
           <p>Released: {track.release_date}</p>
           <p>Length: {formatTrackDuration(track.duration)}</p>
           <p>Tempo: {bpm ? `${bpm} BPM` : "BPM not available"}</p>
