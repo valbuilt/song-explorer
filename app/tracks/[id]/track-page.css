@@ -1,0 +1,28 @@
+.track-detail {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  align-items: start;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+
+  h1 {
+    margin: 0 0 0.5rem;
+  }
+
+  p {
+    margin: 0.25rem 0;
+  }
+
+  audio {
+    width: 100%;
+  }
+}
+.div {
+  padding: 0 10 0 20;
+}
