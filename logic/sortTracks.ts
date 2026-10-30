@@ -30,3 +30,12 @@ export function sortTracks(
   // Keep Deezer's original order when "best-match" is selected.
   return sortedTracks;
 }
+
+// // Make sure the URL contains a valid sorting option
+export function toSortOption(value: string | undefined): SortOption {
+  if (value === "title" || value === "artist" || value === "length") {
+    return value;
+  }
+
+  return "best-match";
+}
