@@ -19,7 +19,7 @@ export default async function TrackPage({ params }: Props) {
   const album = await getAlbumById(track.album.id);
 
   // Some albums have no genres, then I use an empty list
-  const genres = album.genres ? album.genres.data : [];
+  const genres = album && album.genres ? album.genres.data : [];
 
   const genreText =
     genres.length > 0
