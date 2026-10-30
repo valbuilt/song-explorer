@@ -47,20 +47,25 @@ export async function getTrackById(trackId: string): Promise<TrackDetail> {
 }
 
 // Gets album details, including its genres, by album id
-export async function getAlbumById(albumId: number): Promise<Album> {
-  const response = await fetch(
-    `${DEEZER_API}/album/${encodeURIComponent(albumId)}`,
-  );
+export async function getAlbumById(albumId: number): Promise<Album | null> {
+  try {
+    const response = await fetch(
+      `${DEEZER_API}/album/${encodeURIComponent(albumId)}`,
+    );
 
-  if (!response.ok) {
-    throw new Error("Could not get the album from Deezer");
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = await response.json();
+
+    if (data.error) {
+      return null;
+    }
+
+    return data;
+  } catch {
+    // e.g. no internet or Deezer not answering
+    return null;
   }
-
-  const data = await response.json();
-
-  if (data.error) {
-    throw new Error("Deezer answered with an error");
-  }
-
-  return data;
 }
