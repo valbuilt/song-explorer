@@ -38,7 +38,7 @@ export async function getTrackById(trackId: string): Promise<TrackDetail> {
 
   const data = await response.json();
 
-  // If the track cannot be found, show Next.js's 404 page.
+  // If the track cannot be found, show my own not-found page
   if (data.error) {
     notFound();
   }
