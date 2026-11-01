@@ -1,13 +1,13 @@
 # Song Explorer
 
-Song Explorer is a music exploration website built with Next.js and TypeScript. It lets users search for songs, sort the results and explore individual tracks, including their album, genre, duration, BPM and 30-second preview.
+Song Explorer is a music exploration website built with Next.js and TypeScript. It lets users search for songs, sort the results, filter out tracks marked as explicit, and explore individual tracks, including their album, genre, duration, BPM and 30-second preview, when available.
 
 The project was developed as part of my frontend development studies, with dancers, dance teachers and music lovers in mind.
 
 ## Features
 
 - **Search and sorting:** Search by song or artist and sort results by relevance, title, artist or duration.
-- **Track details** View album information, genre, release date, duration and BPM and listen to a 30-second preview when available.
+- **Track details** View album information, genre, release date, duration and BPM and listen to a 30-second preview when available. -**Explicit content filter:** Optionally hide tracks that Deezer marks as containing explicit lyrics.
 - **URL-based search and sorting:** Search terms and sorting options are stored in the URL, allowing the page to be reloaded or opened directly.
 - **Error handling:** Displays messages for empty searches, missing tracks, unsuccessful requests and unavailable information.
 - **Responsive design and accessibility:** Semantic HTML, labelled form fields, image alt text, visible keyboard focus and a responsive track grid.
@@ -83,22 +83,28 @@ the pages put things together, the components show things, `logic/` does the wor
 
 ## Known limitations
 
--Searches return a maximum of 24 tracks and pagination is not implemented.
--BPM, genre and preview information are not available for every track.
--Genre information belongs to the album and may not accurately describe an individual track.
--A dedicated loading state and automated tests have not yet been implemented.
+- Searches return a maximum of 24 tracks and pagination is not implemented.
+- BPM, genre and preview information are not available for every track.
+- Genre information belongs to the album and may not accurately describe an individual track.
+- The explicit filter only hides songs that Deezer has marked as explicit. A song without the mark is not guaranteed to be clean, and the filter only works on the songs shown.
+- A dedicated loading state and automated tests have not yet been implemented.
 
 ## Ideas for later
 
 - A second source for BPM, so more songs have a tempo (the key would be kept out of Git)
-- A filter for BPM range, and a filter to hide songs with explicit lyrics
+- A filter for BPM range
 - Pagination, with the sorting done by Deezer so all pages continue in the same order
 - A loading skeleton while the songs are fetched
 
-## Credits
+## Credits and Documentation
 
 - **Music data, album covers and previews:** [Deezer](https://developers.deezer.com/api)
 - **Project setup:** `create-next-app`
-- **Homepage image:**: [Unsplash] (https://unsplash.com)
+- **Homepage image:** [Unsplash](https://unsplash.com)
 - **Developer:** Valerie V.
 - **GitHub:** [@valbuilt](https://github.com/valbuilt)
+
+- [React Documentation](https://react.dev/reference/react)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [W3Schools](https://www.w3schools.com/)
+- [MDN Web Docs](https://developer.mozilla.org/)
