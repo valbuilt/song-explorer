@@ -1,6 +1,26 @@
 .top-header {
   nav {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: right;
+
+    a {
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-family: var(--font-heading), Impact, sans-serif;
+      font-size: 1.125rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition:
+        background-color 0.2s,
+        color 0.2s;
+    }
+
+    a:hover {
+      background-color: var(--brand-color);
+      color: white;
+    }
   }
 }
