@@ -5,9 +5,14 @@ import "./SearchForm.css";
 type Props = {
   searchWord: string;
   sortOption: SortOption;
+  hideExplicitSongs: boolean;
 };
 
-export default function SearchForm({ searchWord, sortOption }: Props) {
+export default function SearchForm({
+  searchWord,
+  sortOption,
+  hideExplicitSongs,
+}: Props) {
   return (
     <Form action="/tracks" className="search-form">
       <div className="search-form-field">
@@ -29,6 +34,17 @@ export default function SearchForm({ searchWord, sortOption }: Props) {
           <option value="artist">Artist (A to Z)</option>
           <option value="length">Length (shortest first)</option>
         </select>
+      </div>
+
+      <div className="search-form-checkbox">
+        <input
+          id="hide-explicit"
+          type="checkbox"
+          name="hideExplicit"
+          value="on"
+          defaultChecked={hideExplicitSongs}
+        />
+        <label htmlFor="hide-explicit">Hide songs with explicit lyrics</label>
       </div>
 
       <button type="submit">Search</button>
